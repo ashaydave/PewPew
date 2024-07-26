@@ -9,13 +9,14 @@ public class GunshotSound : MonoBehaviour
     private float[] noiseBuffer;
     private int sampleRate;
     private float phase;
-    private float decayTime = 0.05f;
+    private float decayTime = 0.05f; // 50 ms
     private float chirpDuration = 0.05f;
     private float chirpStartFreq = 10000f;
     private float chirpEndFreq = 100f;
     private bool triggerGunshot = false;
     private int sampleIndex = 0;
 
+    // Bandpass filter tweaks
     private float[] bandpassFrequencies = { 200f, 300f, 400f, 500f, 2500f };
     private float[] bandpassBandwidths = { 50f, 50f, 50f, 50f, 50f };
 
@@ -57,7 +58,7 @@ public class GunshotSound : MonoBehaviour
     float GetExcitationNoiseSample(int sampleIndex)
     {
         float time = sampleIndex / (float)sampleRate;
-        float envelope = Mathf.Exp(-time / decayTime); // 50ms decay
+        float envelope = Mathf.Exp(-time / decayTime);
         return envelope * noiseBuffer[sampleIndex % noiseBuffer.Length];
     }
 
