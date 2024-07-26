@@ -28,11 +28,12 @@ public class GunshotSound : MonoBehaviour
         audioSource.spatialize = true;
         audioSource.spatialBlend = 1.0f;
 
-        AudioMixer audioMixer = Resources.Load<AudioMixer>("Master");
+        // Uncomment this and change the name of your Master mix and the Audio Mixer Group in the Audio Mixer
+        /* AudioMixer audioMixer = Resources.Load<AudioMixer>("Master");
         if (audioMixer != null)
         {
             audioSource.outputAudioMixerGroup = audioMixer.FindMatchingGroups("Gunshot")[0];
-        }
+        } */
     }
 
     private void Update()
